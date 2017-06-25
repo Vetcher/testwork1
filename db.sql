@@ -16,7 +16,7 @@ CREATE TABLE devices
  
 CREATE TABLE device_metrics
 (
-    id INT PRIMARY KEY,
+    id serial PRIMARY KEY,
     device_id INT NOT NULL,
     metric_1 INT,
     metric_2 INT,
@@ -31,7 +31,7 @@ CREATE TABLE device_metrics
 
 CREATE TABLE device_alerts
 (
-  id INT PRIMARY KEY,
+  id serial PRIMARY KEY,
   device_id INT,
   message TEXT
 );
