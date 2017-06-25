@@ -203,9 +203,9 @@ func EmailSender(ch chan *gomail.Message, conf EmailConfiguration) {
 			if !open {
 				if s, err = d.Dial(); err != nil {
 					log.Print(err.Error())
-					open = false
+				} else {
+					open = true
 				}
-				open = true
 			}
 			m.SetHeader("From", conf.Username)
 			if err := gomail.Send(s, m); err != nil {
@@ -217,8 +217,9 @@ func EmailSender(ch chan *gomail.Message, conf EmailConfiguration) {
 			if open {
 				if err := s.Close(); err != nil {
 					log.Print(err.Error())
+				} else {
+					open = false
 				}
-				open = false
 			}
 		}
 	}
